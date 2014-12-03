@@ -7,14 +7,43 @@
 #include <linux/init.h>
 #include <linux/miscdevice.h>
 #include <linux/module.h>
+#include <linux/random.h>
 
 #include <asm/uaccess.h>
 
 static ssize_t horse_read(
     struct file * file, char * buf, size_t count, loff_t *ppos
 ) {
-    char *horse = "Neiiiiighhh!\n";
-    int len = strlen(horse);
+
+    char horse[100];
+    int len;
+
+    int i;
+    int j;
+    int k;
+    int l;
+
+    get_random_bytes(&i, sizeof(int));
+    get_random_bytes(&j, sizeof(int));
+    get_random_bytes(&k, sizeof(int));
+    get_random_bytes(&l, sizeof(int));
+
+    i = i % 5;
+    j = j % 20;
+    k = k % 10;
+    l = l % 3;
+
+    strcat(horse, "Ne");
+    strncat(horse, "eeeeeeeeeeeeeeeeeeee", i);
+    strcat(horse, "i");
+    strncat(horse, "iiiiiiiiiiiiiiiiiiii", j);
+    strcat(horse, "gh");
+    strncat(horse, "hhhhhhhhhhhhhhhhhhhh", k);
+    strncat(horse, "!!!!!!!!!!!!!!!!!!!!", l);
+    strcat(horse, "\n");
+
+    len = strlen(horse);
+
     // We only support reading the whole string at once.
     if (count < len) return -EINVAL;
     /*
