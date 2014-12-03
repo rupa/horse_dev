@@ -1,0 +1,10 @@
+.horse_dev.ko.cmd
+.horse_dev.mod.o.cmd
+.horse_dev.o.cmd
+.tmp_versions/
+Module.symvers
+horse_dev.ko
+horse_dev.mod.c
+horse_dev.mod.o
+horse_dev.o
+modules.order

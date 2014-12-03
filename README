@@ -1,0 +1,6 @@
+horse device
+
+sudo apt-get install linux-headers-$(uname -r) module-assistant
+make
+sudo insmod ./horse_dev.ko
+sudo cat /dev/horse
