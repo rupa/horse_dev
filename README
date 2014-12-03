@@ -1,6 +1,16 @@
 horse device
 
+# prereqs
 sudo apt-get install linux-headers-$(uname -r) module-assistant
+
+# build
 make
+
+# load
 sudo insmod ./horse_dev.ko
+
+# use
 sudo cat /dev/horse
+
+# remove
+sudo rmmod horse_dev
